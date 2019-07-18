@@ -2,17 +2,34 @@ import telegram
 from datetime import datetime
 from datetime import date
 from datetime import timedelta
-from helper.wasteDisposal import wasteDisposal
+from urllib.request import urlopen
 import json
 
-zip = "doNotCommit"
-chatId = doNotCommit
-bot = telegram.Bot(token='doNotCommit')
+bot = telegram.Bot(token='doNotCommitTokens')
 
-disposals = [wasteDisposal("paper", zip), wasteDisposal("cardboard", zip)]
+currentDate = date.today()
+currentDateAsString = currentDate.strftime("%Y-%m-%d")
 
-for disposal in disposals:
-    if disposal.GetNextDisposalDate() == date.today() and datetime.now().hour < 12:
-      print(disposal.GetName + "disposal is today!")
-    if (disposal.GetNextDisposalDate() - timedelta(days=1)).date() == date.today() and datetime.now().hour > 12:
-      print (disposal.GetName + "disposal will be tomorrow!")   
+zip = "yourZip"
+
+nextPaperDate = json.load(urlopen("http://openerz.metaodi.ch/api/calendar/paper.json?zip=" + zip + "&start=" + currentDateAsString + "&sort=date&offset=0&limit=1"))['result'][0]['date']
+nextCardboard = json.load(urlopen("http://openerz.metaodi.ch/api/calendar/cardboard.json?zip=" + zip + "&start=" + currentDateAsString + "&offset=0&limit=1"))['result'][0]['date']
+
+cardboardToday = datetime.strptime(nextCardboard, "%Y-%m-%d").date() == currentDate
+paperToday = datetime.strptime(nextPaperDate, "%Y-%m-%d").date() == currentDate
+cardboardTomorrow = (datetime.strptime(nextCardboard, "%Y-%m-%d") - timedelta(days=1)).date() == currentDate
+paperTomorrow = (datetime.strptime(nextPaperDate, "%Y-%m-%d") - timedelta(days=1)).date() == currentDate
+
+chatId = doNotCommitChatIds
+
+if cardboardToday and datetime.now().hour < 12:
+  bot.sendMessage(chatId, "Hüt isch imfall Karton!")
+
+if paperToday and datetime.now().hour < 12:
+  bot.sendMessage(chatId, "Hüt isch imfall Papier!")
+
+if cardboardTomorrow and datetime.now().hour > 12:
+  bot.sendMessage(chatId, "Morn isch imfall Karton!")
+
+if paperTomorrow and datetime.now().hour > 12:
+  bot.sendMessage(chatId, "Morn isch imfall Papier!")
