@@ -17,6 +17,9 @@ pip3 install python-telegram-bot
 
 [Telegram Chat Id finden](https://stackoverflow.com/questions/32423837/telegram-bot-how-to-get-a-group-chat-id)
 
+## Konfigurationen
+Anpassungen:
+Postleitzahl, Token und ChatId im config.json eintragen
 
 ## Hosting
 Bspw. mit
