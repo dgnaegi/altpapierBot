@@ -1,5 +1,7 @@
 {
-  "zip": "doNotCommit",
-  "chatId": "doNotCommit",
-  "token": "doNotCommit"
+    "host": "nope",
+    "databaseName": "nope",
+    "databaseUser": "nope",
+    "databasePassword": "nope",
+    "token": "nope"
 }
