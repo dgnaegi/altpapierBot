@@ -18,18 +18,18 @@ def stop(bot, update):
     bot.sendMessage(chatId, "I've always been happy to help you. Your data got deleted entirely. I'll always be there for you when you need me <3")
 
 def zip(bot, update, args):
-    zipCodeOrNull = argumentParser.Parse(args)
+    zipCodeOrNone = argumentParser.Parse(args)
     chatId = update.message.chat_id
 
-    if zipCodeOrNull is None:
+    if zipCodeOrNone is None:
         bot.sendMessage(chatId, "Invalid input! Please enter a valid postcode of the city of Zurich in this format:")
         bot.sendMessage(chatId, "/zip 80XX")
         return
 
-    data = userData(chatId, zipCodeOrNull)
+    data = userData(chatId, zipCodeOrNone)
     success = dataAccess.saveUserData(data)
     if success:
-        bot.sendMessage(chatId, "You're setup and will be notified from now on for disposal in {} Zurich.".format(zipCodeOrNull))
+        bot.sendMessage(chatId, "You're setup and will be notified from now on for disposal in {} Zurich.".format(zipCodeOrNone))
         bot.sendMessage(chatId, "You can unsubscribe by sending /stop")
     else:
         bot.sendMessage(chatId, "You are already subscribed! Please unsubscribe first by sending /stop")
