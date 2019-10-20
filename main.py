@@ -20,7 +20,7 @@ def stop(bot, update):
 def help(bot, update):
     chatId = update.message.chat_id
     dataAccess.deleteUserData(chatId)
-    bot.sendMessage(chatId, "You can find more information and a small tutorial on http://dgnaegi.ch/altpapierbot. For further questions do not hesitate to contact my creator through twitter: https://twitter.com/ignobledaniel")
+    bot.sendMessage(chatId, "You can find more information and a small tutorial on http://dgnaegi.ch/blog/altpapierbot. For further questions do not hesitate to contact my creator through twitter: https://twitter.com/ignobledaniel")
 
 def zip(bot, update, args):
     zipCodeOrNone = argumentParser.Parse(args)
