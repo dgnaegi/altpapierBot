@@ -1,7 +1,7 @@
 {
     "host": "localhost",
     "databaseName": "altpapierBot",
-    "databaseUser": "root",
+    "databaseUser": "user",
     "databasePassword": "yourpassword",
-    "token": "986737536:AAEJwLiN7lMXoF2Nk_Z9-UKP4P8rkwzMhuw"
+    "token": "yourtoken"
 }
