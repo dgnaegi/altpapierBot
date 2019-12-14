@@ -19,7 +19,7 @@ def stop(bot, update):
 
 def help(bot, update):
     chatId = update.message.chat_id
-    bot.sendMessage(chatId, "You can find more information and a small tutorial on http://dgnaegi.ch/blog/altpapierBot.html. For further questions do not hesitate to contact my creator on twitter: https://twitter.com/ignobledaniel")
+    bot.sendMessage(chatId, "You can find more information and a small tutorial on http://dgnaegi.ch/blog/altpapierBot.html. For further questions do not hesitate to contact my creator: @ignobled")
 
 def zip(bot, update, args):
     zipCodeOrNone = argumentParser.Parse(args)
