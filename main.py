@@ -33,7 +33,7 @@ def zip(bot, update, args):
     data = userData(chatId, zipCodeOrNone)
     success = dataAccess.saveUserData(data)
     if success:
-        bot.sendMessage(chatId, "You're setup and will be notified from now on for disposal in {} Zurich.".format(zipCodeOrNone))
+        bot.sendMessage(chatId, "You're setup and will be notified from now on for disposal in {}.".format(zipCodeOrNone))
         bot.sendMessage(chatId, "You can unsubscribe by sending /stop")
     else:
         bot.sendMessage(chatId, "You are already subscribed! Please unsubscribe first by sending /stop")
