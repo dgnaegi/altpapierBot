@@ -4,7 +4,7 @@ from datetime import timedelta
 from urllib.request import urlopen
 import json
 
-class wasteDisposal:
+class zurichWasteDisposal:
     def __init__(self, name, zip):
         self.name = name
         self.zip = zip

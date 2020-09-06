@@ -1,7 +1,8 @@
 from datetime import datetime
 from datetime import date
 from datetime import timedelta
-from helper.wasteDisposal import wasteDisposal
+from helper.zurichWasteDisposal import zurichWasteDisposal
+from helper.stgallenApi import stgallenApi
 from dataStorage.dataAccess import dataAccess
 from helper.bot import bot
 import json
@@ -12,10 +13,10 @@ with open('config.json') as data_file:
 
 bot = bot(token)
 
-userDataSets = dataAccess.getAllUserdata()
+zhUserDataSets = dataAccess.getZurichUserdata()
 logf = open("error.log", "w")
-for userDataSet in userDataSets:
-  disposals = [wasteDisposal("paper", str(userDataSet.zipCode)), wasteDisposal("cardboard", str(userDataSet.zipCode))]
+for userDataSet in zhUserDataSets:
+  disposals = [zurichWasteDisposal("paper", str(userDataSet.zipCode)), zurichWasteDisposal("cardboard", str(userDataSet.zipCode))]
   for disposal in disposals:
     try:  
       if disposal.GetNextDisposalDate().date() == date.today() and datetime.now().hour < 12:
@@ -24,4 +25,14 @@ for userDataSet in userDataSets:
         bot.SendMessage(userDataSet.chatId, disposal.GetName() + " disposal will be tomorrow!")  
     except:
       logf.write("An exception occurred for ZIP: " + str(userDataSet.zipCode) + "\r\n")
-     
+
+sgUserDataSets = dataAccess.getStGallenUserdata()
+
+tomorrowPaperDisposalAreaCodes = stgallenApi.GetTomorrowPaperDisposalAreaCodes()
+todayPaperDisposalAreaCodes = stgallenApi.GetTodayPaperDisposalAreaCodes()
+
+for userDataSet in sgUserDataSets:
+  if userDataSet.areaCode in tomorrowPaperDisposalAreaCodes:
+    bot.SendMessage(userDataSet.chatId, "Paper disposal will be tomorrow!")
+  if userDataSet.areaCode in todayPaperDisposalAreaCodes:
+    bot.SendMessage(userDataSet.chatId, "Paper disposal is today!")    

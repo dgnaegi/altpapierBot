@@ -4,5 +4,6 @@ use altpapierBot;
 
 CREATE TABLE userData (
     ChatId VARCHAR(255) NOT NULL,
-    ZipCode SMALLINT
+    ZipCode SMALLINT NULL,
+    AreaCode VARCHAR(7) NULL
 );
