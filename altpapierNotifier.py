@@ -31,8 +31,15 @@ sgUserDataSets = dataAccess.getStGallenUserdata()
 tomorrowPaperDisposalAreaCodes = stgallenApi.GetTomorrowPaperDisposalAreaCodes()
 todayPaperDisposalAreaCodes = stgallenApi.GetTodayPaperDisposalAreaCodes()
 
+tomorrowCardboardDisposalAreaCodes = stgallenApi.GetTomorrowCardboardDisposalAreaCodes()
+todayCardboardDisposalAreaCodes = stgallenApi.GetTodayCardboardDisposalAreaCodes()
+
 for userDataSet in sgUserDataSets:
   if userDataSet.areaCode in tomorrowPaperDisposalAreaCodes:
     bot.SendMessage(userDataSet.chatId, "Paper disposal will be tomorrow!")
   if userDataSet.areaCode in todayPaperDisposalAreaCodes:
-    bot.SendMessage(userDataSet.chatId, "Paper disposal is today!")    
+    bot.SendMessage(userDataSet.chatId, "Paper disposal is today!") 
+  if userDataSet.areaCode in tomorrowCardboardDisposalAreaCodes:
+    bot.SendMessage(userDataSet.chatId, "Cardboard disposal will be tomorrow!")
+  if userDataSet.areaCode in todayCardboardDisposalAreaCodes:
+    bot.SendMessage(userDataSet.chatId, "Cardboard disposal is today!") 
