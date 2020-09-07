@@ -48,7 +48,3 @@ class stgallenApi:
             areaCodes.append(record['fields']['gebiets_id'].upper())
     
         return areaCodes
-
-
-
-
