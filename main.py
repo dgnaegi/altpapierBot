@@ -10,7 +10,7 @@ import json
 def start(bot, update):
     chatId = update.message.chat_id
     bot.sendMessage(chatId, "Hi, im altpapierBot. Here to remind you about cardboard and paper removal for Zurich or St.Gallen. For more information enter /help")
-    bot.sendMessage(chatId, "For Zurich, please let me know your ZIP Code by sending it in this format:")
+    bot.sendMessage(chatId, "For Zurich, please let me know your postal code by sending it in this format:")
     bot.sendMessage(chatId, "/zip 80XX")
     bot.sendMessage(chatId, "For St.Gallen, send your disposal area (A,B,C,...) like this:")
     bot.sendMessage(chatId, "/area X")
@@ -29,7 +29,7 @@ def zip(bot, update, args):
     chatId = update.message.chat_id
 
     if zipCodeOrNone is None:
-        bot.sendMessage(chatId, "Invalid input! Please enter a valid postcode of the city of Zurich in this format:")
+        bot.sendMessage(chatId, "Invalid input! Please enter a valid postal code of the city of Zurich in this format:")
         bot.sendMessage(chatId, "/zip 80XX")
         return
 
@@ -79,6 +79,7 @@ def main():
     dp.add_handler(CommandHandler('help',help))
     dp.add_handler(CommandHandler('stats', stats))
     dp.add_handler(CommandHandler('zip',zip, pass_args=True))
+    dp.add_handler(CommandHandler('postalcode',zip, pass_args=True))
     dp.add_handler(CommandHandler('area',area, pass_args=True))
     updater.start_polling()
     updater.idle()
