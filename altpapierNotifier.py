@@ -16,27 +16,27 @@ logf = open("error.log", "w")
 
 zhUserDataSets = dataAccess.getZurichUserdata()
 
-tomorrowZHPaperDisposalAreaCodes = zurichApi.GetTomorrowPaperDisposalZipCodes()
-todayZHPaperDisposalAreaCodes = zurichApi.GetTodayPaperDisposalZipCodes()
+tomorrowZHPaperDisposalZipCodes = zurichApi.GetTomorrowPaperDisposalZipCodes()
+todayZHPaperDisposalZipCodes = zurichApi.GetTodayPaperDisposalZipCodes()
 
-tomorrowZHCardboardDisposalAreaCodes = zurichApi.GetTomorrowCardboardDisposalZips()
-todayCardboardZHDisposalAreaCodes = zurichApi.GetTodayPaperDisposalZipCodes()
+tomorrowZHCardboardDisposalZipCodes = zurichApi.GetTomorrowCardboardDisposalZips()
+todayCardboardZHDisposalZipCodes = zurichApi.GetTodayPaperDisposalZipCodes()
 
 sentMessageZurich = 0
 
 for userDataSet in zhUserDataSets:
-  if userDataSet.zipCode in tomorrowZHPaperDisposalAreaCodes and datetime.now().hour > 12:
+  if userDataSet.zipCode in tomorrowZHPaperDisposalZipCodes and datetime.now().hour > 12:
     bot.SendMessage(userDataSet.chatId, "Paper disposal will be tomorrow!")
     sentMessageZurich = sentMessageZurich + 1
-  if userDataSet.zipCode in todayZHPaperDisposalAreaCodes and datetime.now().hour < 12:
+  if userDataSet.zipCode in todayZHPaperDisposalZipCodes and datetime.now().hour < 12:
     bot.SendMessage(userDataSet.chatId, "Paper disposal is today!") 
     sentMessageZurich = sentMessageZurich + 1
-  if userDataSet.zipCode in tomorrowZHCardboardDisposalAreaCodes and datetime.now().hour > 12:
+  if userDataSet.zipCode in tomorrowZHCardboardDisposalZipCodes and datetime.now().hour > 12:
     bot.SendMessage(userDataSet.chatId, "Cardboard disposal will be tomorrow!")
     sentMessageZurich = sentMessageZurich + 1
-  if userDataSet.zipCode in todayCardboardZHDisposalAreaCodes and datetime.now().hour < 12:
+  if userDataSet.zipCode in todayCardboardZHDisposalZipCodes and datetime.now().hour < 12:
     bot.SendMessage(userDataSet.chatId, "Cardboard disposal is today!") 
-    sentMessageZurich = sentMessageStGallen + 1
+    sentMessageZurich = sentMessageZurich + 1
 
 sgUserDataSets = dataAccess.getStGallenUserdata()
 
