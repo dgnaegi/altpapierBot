@@ -1,4 +1,5 @@
 class areaCodeParser:
+    @staticmethod
     def Parse(args):
         validAreaCodes = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L-OST", "L-WEST"]
         

@@ -1,7 +1,7 @@
 from datetime import datetime
 from datetime import date
 from datetime import timedelta
-from helper.zurichWasteDisposal import zurichWasteDisposal
+from helper.zurichApi import zurichApi
 from helper.stgallenApi import stgallenApi
 from dataStorage.dataAccess import dataAccess
 from helper.bot import bot
@@ -12,43 +12,53 @@ with open('config.json') as data_file:
     token = data["token"]
 
 bot = bot(token)
+logf = open("error.log", "w")
 
 zhUserDataSets = dataAccess.getZurichUserdata()
-logf = open("error.log", "w")
+
+tomorrowZHPaperDisposalAreaCodes = zurichApi.GetTomorrowPaperDisposalZipCodes()
+todayZHPaperDisposalAreaCodes = zurichApi.GetTodayPaperDisposalZipCodes()
+
+tomorrowZHCardboardDisposalAreaCodes = zurichApi.GetTomorrowCardboardDisposalZips()
+todayCardboardZHDisposalAreaCodes = zurichApi.GetTodayPaperDisposalZipCodes()
+
 sentMessageZurich = 0
+
 for userDataSet in zhUserDataSets:
-  disposals = [zurichWasteDisposal("paper", str(userDataSet.zipCode)), zurichWasteDisposal("cardboard", str(userDataSet.zipCode))]
-  for disposal in disposals:
-    try:  
-      if disposal.GetNextDisposalDate().date() == date.today() and datetime.now().hour < 12:
-        bot.SendMessage(userDataSet.chatId, disposal.GetName() + " disposal is today!")
-        sentMessageZurich = sentMessageZurich + 1
-      elif (disposal.GetNextDisposalDate() - timedelta(days=1)).date() == date.today() and datetime.now().hour > 12:
-        bot.SendMessage(userDataSet.chatId, disposal.GetName() + " disposal will be tomorrow!")
-        sentMessageZurich = sentMessageZurich + 1
-    except:
-      logf.write("An exception occurred for ZIP: " + str(userDataSet.zipCode) + "\r\n")
+  if userDataSet.zipCode in tomorrowZHPaperDisposalAreaCodes and datetime.now().hour > 12:
+    bot.SendMessage(userDataSet.chatId, "Paper disposal will be tomorrow!")
+    sentMessageZurich = sentMessageZurich + 1
+  if userDataSet.zipCode in todayZHPaperDisposalAreaCodes and datetime.now().hour < 12:
+    bot.SendMessage(userDataSet.chatId, "Paper disposal is today!") 
+    sentMessageZurich = sentMessageZurich + 1
+  if userDataSet.zipCode in tomorrowZHCardboardDisposalAreaCodes and datetime.now().hour > 12:
+    bot.SendMessage(userDataSet.chatId, "Cardboard disposal will be tomorrow!")
+    sentMessageZurich = sentMessageZurich + 1
+  if userDataSet.zipCode in todayCardboardZHDisposalAreaCodes and datetime.now().hour < 12:
+    bot.SendMessage(userDataSet.chatId, "Cardboard disposal is today!") 
+    sentMessageZurich = sentMessageStGallen + 1
 
 sgUserDataSets = dataAccess.getStGallenUserdata()
 
-tomorrowPaperDisposalAreaCodes = stgallenApi.GetTomorrowPaperDisposalAreaCodes()
-todayPaperDisposalAreaCodes = stgallenApi.GetTodayPaperDisposalAreaCodes()
+tomorrowSGPaperDisposalAreaCodes = stgallenApi.GetTomorrowPaperDisposalAreaCodes()
+todaySGPaperDisposalAreaCodes = stgallenApi.GetTodayPaperDisposalAreaCodes()
 
-tomorrowCardboardDisposalAreaCodes = stgallenApi.GetTomorrowCardboardDisposalAreaCodes()
-todayCardboardDisposalAreaCodes = stgallenApi.GetTodayCardboardDisposalAreaCodes()
+tomorrowSGCardboardDisposalAreaCodes = stgallenApi.GetTomorrowCardboardDisposalAreaCodes()
+todaySGCardboardDisposalAreaCodes = stgallenApi.GetTodayCardboardDisposalAreaCodes()
 
 sentMessageStGallen = 0
+
 for userDataSet in sgUserDataSets:
-  if userDataSet.areaCode in tomorrowPaperDisposalAreaCodes and datetime.now().hour > 12:
+  if userDataSet.areaCode in tomorrowSGPaperDisposalAreaCodes and datetime.now().hour > 12:
     bot.SendMessage(userDataSet.chatId, "Paper disposal will be tomorrow!")
     sentMessageStGallen = sentMessageStGallen + 1
-  if userDataSet.areaCode in todayPaperDisposalAreaCodes and datetime.now().hour < 12:
+  if userDataSet.areaCode in todaySGPaperDisposalAreaCodes and datetime.now().hour < 12:
     bot.SendMessage(userDataSet.chatId, "Paper disposal is today!") 
     sentMessageStGallen = sentMessageStGallen + 1
-  if userDataSet.areaCode in tomorrowCardboardDisposalAreaCodes and datetime.now().hour > 12:
+  if userDataSet.areaCode in tomorrowSGCardboardDisposalAreaCodes and datetime.now().hour > 12:
     bot.SendMessage(userDataSet.chatId, "Cardboard disposal will be tomorrow!")
     sentMessageStGallen = sentMessageStGallen + 1
-  if userDataSet.areaCode in todayCardboardDisposalAreaCodes and datetime.now().hour < 12:
+  if userDataSet.areaCode in todaySGCardboardDisposalAreaCodes and datetime.now().hour < 12:
     bot.SendMessage(userDataSet.chatId, "Cardboard disposal is today!") 
     sentMessageStGallen = sentMessageStGallen + 1
 

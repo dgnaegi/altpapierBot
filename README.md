@@ -14,8 +14,8 @@ python-telegram-bot mit [pip](https://pip.pypa.io/en/stable/) installieren
 
 ```bash
 pip3 install python-telegram-bot
-pip3 install request
-mysql-connector-python
+pip3 install requests
+pip3 install mysql-connector-python
 ```
 [Telegram Bot erstellen und Token erhalten](https://www.siteguarding.com/en/how-to-get-telegram-bot-api-token)
 
