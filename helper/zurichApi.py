@@ -38,8 +38,6 @@ class zurichApi:
         zipCodes =[]
         for record in records:
             zipCodes.append(record['zip'])
-
-        print(zipCodes)
     
         return zipCodes
 

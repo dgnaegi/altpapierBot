@@ -1,6 +1,4 @@
 from datetime import datetime
-from datetime import date
-from datetime import timedelta
 from helper.zurichApi import zurichApi
 from helper.stgallenApi import stgallenApi
 from dataStorage.dataAccess import dataAccess
