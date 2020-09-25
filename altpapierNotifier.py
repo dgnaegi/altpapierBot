@@ -18,8 +18,8 @@ zhUserDataSets = dataAccess.getZurichUserdata()
 tomorrowZHPaperDisposalZipCodes = zurichApi.GetTomorrowPaperDisposalZipCodes()
 todayZHPaperDisposalZipCodes = zurichApi.GetTodayPaperDisposalZipCodes()
 
-tomorrowZHCardboardDisposalZipCodes = zurichApi.GetTomorrowCardboardDisposalZips()
-todayCardboardZHDisposalZipCodes = zurichApi.GetTodayPaperDisposalZipCodes()
+tomorrowZHCardboardDisposalZipCodes = zurichApi.GetTomorrowCardboardDisposalZipCodes()
+todayCardboardZHDisposalZipCodes = zurichApi.GetTodayCardboardDisposalZipCodes()
 
 sentMessageZurich = 0
 

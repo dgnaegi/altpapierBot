@@ -30,7 +30,7 @@ class zurichApi:
         return zipCodes
 
     @staticmethod
-    def GetTomorrowCardboardDisposalZips():
+    def GetTomorrowCardboardDisposalZipCodes():
         requestedDate = str((datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d'))
         url = "http://openerz.metaodi.ch/api/calendar/cardboard.json?start=" + requestedDate + "&end=" + requestedDate + "&offset=0&limit=0"
 
@@ -42,7 +42,7 @@ class zurichApi:
         return zipCodes
 
     @staticmethod
-    def GetTodayCardboardDisposalZips():
+    def GetTodayCardboardDisposalZipCodes():
         requestedDate = str((datetime.now()).strftime('%Y-%m-%d'))
         url = "http://openerz.metaodi.ch/api/calendar/cardboard.json?start=" + requestedDate + "&end=" + requestedDate + "&offset=0&limit=0"
 
