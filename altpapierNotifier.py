@@ -38,7 +38,7 @@ for userDataSet in zhUserDataSets:
       bot.SendMessage(userDataSet.chatId, "Cardboard disposal is today!") 
       sentMessageZurich = sentMessageZurich + 1
   except:
-    logf.write("An exception occurred for ZIP: " + str(userDataSet.zipCode) + " " + str(sys.exc_info()[1]) + "\r\n")
+    logf.write("An exception occurred for ZIP: " + str(userDataSet.zipCode) + "\r\n")
 
 sgUserDataSets = dataAccess.getStGallenUserdata()
 
@@ -65,7 +65,7 @@ for userDataSet in sgUserDataSets:
       bot.SendMessage(userDataSet.chatId, "Cardboard disposal is today!") 
       sentMessageStGallen = sentMessageStGallen + 1
   except:
-    logf.write("An exception occurred for Area: " + str(userDataSet.area) + " " + str(sys.exc_info()[1]) + "\r\n")
+    logf.write("An exception occurred for Area: " + str(userDataSet.area) + "\r\n")
 
 sendLog = open("send.log", "w")
 sendLog.write("Sent messages Zurich: " + str(sentMessageZurich) + "\r\n")
