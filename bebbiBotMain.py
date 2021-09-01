@@ -14,7 +14,7 @@ def start(update: Update, context: CallbackContext):
 def stop(update: Update, context: CallbackContext):
     chatId = update.effective_chat.id
     dataAccess.deleteUserData(chatId)
-    update.message.reply_text(chatId, "I've always been happy to help you. Your data got deleted entirely. I'll always be there for you when you need me <3")
+    update.message.reply_text("I've always been happy to help you. Your data got deleted entirely. I'll always be there for you when you need me <3")
 
 def help(update: Update, context: CallbackContext):
     update.message.reply_text("You can find more information and a small tutorial on https://dgnaegi.ch/2020/09/06/altpapierbot/. For further questions do not hesitate to contact my creator: @ignobled")
@@ -24,18 +24,18 @@ def area(update: Update, context: CallbackContext):
     chatId = update.message.chat_id
 
     if areaCodeOrNone is None:
-        update.message.reply_text(chatId, "Invalid input! Please enter a valid disposal area code of the city of St.Gallen in this format:")
-        update.message.reply_text(chatId, "/area X")
-        update.message.reply_text(chatId, "Valid areas are: tbd")
+        update.message.reply_text("Invalid input! Please enter a valid disposal area code of the city of St.Gallen in this format")
+        update.message.reply_text("/area X")
+        update.message.reply_text("Valid areas are: tbd")
         return
     
-    data = userData(chatId, areaCodeOrNone, None)
+    data = userData(chatId, None, areaCodeOrNone)
     success = dataAccess.saveUserData(data)
     if success:
-        update.message.reply_text(chatId, "You're setup and will be notified from now on for disposal in area {}.".format(areaCodeOrNone))
-        update.message.reply_text(chatId, "You can unsubscribe by sending /stop")
+        update.message.reply_text("Invalid input! Please enter a valid disposal area code of the city of Basel (A-H) in this format:")
+        update.message.reply_text("/area x")
     else:
-        update.message.reply_text(chatId, "You are already subscribed! Please unsubscribe first by sending /stop")
+        update.message.reply_text("You are already subscribed! Please unsubscribe first by sending /stop")
 
 def main():
     with open('./config.json') as data_file:    

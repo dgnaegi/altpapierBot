@@ -64,7 +64,7 @@ for userDataSet in sgUserDataSets:
       bot.SendMessage(userDataSet.chatId, "Cardboard disposal is today!") 
       sentMessageStGallen = sentMessageStGallen + 1
   except:
-    logf.write("An exception occurred for Area: " + str(userDataSet.area) + "\r\n")
+    logf.write("An exception occurred for Area: " + str(userDataSet.areaCode) + "\r\n")
 
 sendLog = open("send.log", "w")
 sendLog.write("Sent messages Zurich: " + str(sentMessageZurich) + "\r\n")
