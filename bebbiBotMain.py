@@ -25,7 +25,6 @@ def area(update: Update, context: CallbackContext):
     if areaCodeOrNone is None:
         update.message.reply_text("Invalid input! Please enter a valid disposal area code of the city of Basel (A-H) in this format:")
         update.message.reply_text("/area X")
-        update.message.reply_text("Valid areas are: tbd")
         return
     
     data = userData(chatId, None, areaCodeOrNone)
