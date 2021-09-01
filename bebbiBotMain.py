@@ -1,5 +1,4 @@
 from dataStorage.userData import userData
-from telegram.ext import Updater, CommandHandler
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, CallbackContext
 from dataStorage.dataAccessBasel import dataAccess
@@ -24,7 +23,7 @@ def area(update: Update, context: CallbackContext):
     chatId = update.message.chat_id
 
     if areaCodeOrNone is None:
-        update.message.reply_text("Invalid input! Please enter a valid disposal area code of the city of St.Gallen in this format")
+        update.message.reply_text("Invalid input! Please enter a valid disposal area code of the city of Basel (A-H) in this format:")
         update.message.reply_text("/area X")
         update.message.reply_text("Valid areas are: tbd")
         return
@@ -32,8 +31,8 @@ def area(update: Update, context: CallbackContext):
     data = userData(chatId, None, areaCodeOrNone)
     success = dataAccess.saveUserData(data)
     if success:
-        update.message.reply_text("Invalid input! Please enter a valid disposal area code of the city of Basel (A-H) in this format:")
-        update.message.reply_text("/area x")
+        update.message.reply_text("You're setup and will be notified from now on for cardboard and paper disposal")
+        update.message.reply_text("You can unsubscribe by sending /stop")
     else:
         update.message.reply_text("You are already subscribed! Please unsubscribe first by sending /stop")
 
