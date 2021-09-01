@@ -4,7 +4,6 @@ from dataStorage.userData import userData
 from dataStorage.dataAccess import dataAccess
 from helper.zipCodeParser import zipCodeParser
 from helper.areaCodeParser import areaCodeParser
-import re
 import json
 
 def start(update: Update, context: CallbackContext):
@@ -59,7 +58,6 @@ def area(update: Update, context: CallbackContext):
         update.message.reply_text("You are already subscribed! Please unsubscribe first by sending /stop")
 
 def stats(update: Update, context: CallbackContext):
-    chatId = update.message.chat_id
     zhUserCount = "Users in Zurich: " + str(len(dataAccess.getZurichUserdata()))
     sgUserCount = "Users in St.Gallen: " + str(len(dataAccess.getStGallenUserdata()))
 

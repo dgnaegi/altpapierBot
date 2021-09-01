@@ -37,7 +37,7 @@ def area(update: Update, context: CallbackContext):
         update.message.reply_text("You are already subscribed! Please unsubscribe first by sending /stop")
 
 def main():
-    with open('./config.json') as data_file:    
+    with open('config.json') as data_file:    
             data = json.load(data_file)
             token = data["bebbiToken"]
             
