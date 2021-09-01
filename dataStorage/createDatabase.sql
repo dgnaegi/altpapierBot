@@ -7,3 +7,8 @@ CREATE TABLE userData (
     ZipCode SMALLINT NULL,
     AreaCode VARCHAR(7) NULL
 );
+
+CREATE TABLE bebbiBotUserData (
+    ChatId VARCHAR(255) NOT NULL,
+    AreaCode VARCHAR(7) NULL
+);

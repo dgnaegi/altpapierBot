@@ -1,7 +1,8 @@
 {
-    "host": "host",
+    "host": "localhost",
     "databaseName": "altpapierBot",
-    "databaseUser": "username",
+    "databaseUser": "user",
     "databasePassword": "yourpassword",
-    "token": "yourtoken"
+    "token": "yourtoken",
+    "bebbiToken": "bebbiToken"
 }

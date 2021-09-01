@@ -13,3 +13,15 @@ class areaCodeParser:
             return args[0].upper()
         else:
             return None
+        
+class areaCodeBaselParser:
+    @staticmethod
+    def Parse(args):
+        validAreaCodes = ["A", "B", "C", "D", "E", "F", "G", "H"]
+        
+        if len(args) != 1:
+            return None
+        elif args[0].upper() in validAreaCodes:
+            return args[0].upper()
+        else:
+            return None

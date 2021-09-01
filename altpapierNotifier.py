@@ -4,7 +4,6 @@ from helper.stgallenApi import stgallenApi
 from dataStorage.dataAccess import dataAccess
 from helper.bot import bot
 import json
-import sys
 
 with open('config.json') as data_file:    
     data = json.load(data_file)
