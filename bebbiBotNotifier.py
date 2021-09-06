@@ -20,8 +20,8 @@ todayDisposalAreaCodes = baselApi.GetTodayDisposalAreaCodes()
 for userDataSet in userDataSets:
   try:    
     if userDataSet.areaCode in tomorrowDisposalAreaCodes and datetime.now().hour > 12:
-      bot.SendMessage(userDataSet.chatId, "Cardboard and paper disposal will be tomorrow!")
+      bot.SendMessage(userDataSet.chatId, "Morn isch Karton- und Papierentsorgig!")
     if userDataSet.areaCode in todayDisposalAreaCodes and datetime.now().hour < 12:
-      bot.SendMessage(userDataSet.chatId, text="Cardboard and paper disposal is today!") 
+      bot.SendMessage(userDataSet.chatId, text="Hüt isch Karton- und Papierentsorgig!") 
   except:
     logf.write("An exception occurred for basel area code: " + str(userDataSet.areaCode) + "\r\n")
