@@ -1,5 +1,4 @@
 from datetime import datetime
-from telegram import base
 from helper.baselApi import baselApi
 from dataStorage.dataAccessBasel import dataAccess
 from helper.bot import bot
