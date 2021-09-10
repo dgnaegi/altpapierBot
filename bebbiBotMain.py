@@ -11,7 +11,7 @@ def start(update: Update, context: CallbackContext):
     update.message.reply_text("Bsp.: /area X")
 
 def stop(update: Update, context: CallbackContext):
-    chatId = update.effective_chat.id
+    chatId = update.message.chat_id
     dataAccess.deleteUserData(chatId)
     update.message.reply_text("Frait mi, dass ych dir ha kenne hälfe. Dyyni Daate sind gänzlig glescht worde. Ych bi wyterhin doo, wenn wider myyni Hilf bruuchsch <3")
 
