@@ -19,7 +19,6 @@ def stop(update: Update, context: CallbackContext):
     update.message.reply_text("I've always been happy to help you. Your data got deleted entirely. I'll always be there for you when you need me <3")
 
 def help(update: Update, context: CallbackContext):
-    chatId = update.message.chat_id
     update.message.reply_text("You can find more information and a small tutorial on https://dgnaegi.ch/2020/09/06/altpapierbot/. For further questions do not hesitate to contact my creator: @ignobled")
 
 def zip(update: Update, context: CallbackContext):
