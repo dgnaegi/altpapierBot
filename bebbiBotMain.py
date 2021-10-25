@@ -8,6 +8,7 @@ import json
 def start(update: Update, context: CallbackContext):
     update.message.reply_text("Sali, ych bi dr «Bebbi Bapyyr Bot». Ych bi doo, zem di an d Karton- und Bapyyrentsorgig in Baasel z erinnere. Fir mee Informazioone, drugg uf /hilf")
     update.message.reply_text("Saag mir bitte, weeli Entsorgigszoone (A-H) fir di zuedrifft")
+    update.message.reply_text("Dyne Entsorgigszoone findsch doo https://www.tiefbauamt.bs.ch/entsorgung-sauberkeit/abfallentsorgung/zonensuche.html")
     update.message.reply_text("Bsp.: /area X")
 
 def stop(update: Update, context: CallbackContext):
