@@ -3,7 +3,6 @@ from telegram.ext import Updater, CommandHandler, CallbackContext
 from dataStorage.userData import userData
 from dataStorage.dataAccess import dataAccess
 from helper.zipCodeParser import zipCodeParser
-from helper.areaCodeParser import areaCodeParser
 import json
 
 def start(update: Update, context: CallbackContext):
