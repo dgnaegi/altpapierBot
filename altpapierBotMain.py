@@ -6,7 +6,7 @@ from helper.zipCodeParser import zipCodeParser
 import json
 
 def start(update: Update, context: CallbackContext):
-    update.message.reply_text("Hi, im altpapierBot. Here to remind you about cardboard and paper removal for Zurich or St.Gallen. For more information enter /help")
+    update.message.reply_text("Hi, im altpapierBot. Here to remind you about cardboard and paper removal for Zurich. For more information enter /help")
     update.message.reply_text("For Zurich, please let me know your postal code by sending it in this format:")
     update.message.reply_text("/zip 80XX")
 
