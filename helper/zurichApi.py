@@ -13,6 +13,8 @@ class zurichApi:
         records = json.load(urlopen(url))['result']
         zipCodes =[]
         for record in records:
+            if 'zip' not in record:
+                continue
             zipCodes.append(record['zip'])
     
         return zipCodes
@@ -25,6 +27,8 @@ class zurichApi:
         records = json.load(urlopen(url))['result']
         zipCodes =[]
         for record in records:
+            if 'zip' not in record:
+                continue
             zipCodes.append(record['zip'])
     
         return zipCodes
@@ -37,6 +41,8 @@ class zurichApi:
         records = json.load(urlopen(url))['result']
         zipCodes =[]
         for record in records:
+            if 'zip' not in record:
+                continue
             zipCodes.append(record['zip'])
     
         return zipCodes
@@ -49,6 +55,8 @@ class zurichApi:
         records = json.load(urlopen(url))['result']
         zipCodes =[]
         for record in records:
+            if 'zip' not in record:
+                continue
             zipCodes.append(record['zip'])
     
         return zipCodes
