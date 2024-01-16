@@ -8,8 +8,9 @@ class zurichApi:
     @staticmethod
     def GetTomorrowPaperDisposalZipCodes():
         requestedDate = str((datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d'))
-        url = "http://openerz.metaodi.ch/api/calendar/paper.json?region=zurich&start=" + requestedDate + "&end=" + requestedDate + "&offset=0&limit=100"
+        url = "http://openerz.metaodi.ch/api/calendar.json?types=paper&region=zurich&start=" + requestedDate + "&end=" + requestedDate + "&offset=0&limit=100"
 
+        print(json.load(urlopen(url)))
         records = json.load(urlopen(url))['result']
         zipCodes =[]
         for record in records:
@@ -22,7 +23,7 @@ class zurichApi:
     @staticmethod
     def GetTodayPaperDisposalZipCodes():
         requestedDate = str((datetime.now()).strftime('%Y-%m-%d'))
-        url = "http://openerz.metaodi.ch/api/calendar/paper.json?region=zurich&start=" + requestedDate + "&end=" + requestedDate + "&offset=0&limit=100"
+        url = "http://openerz.metaodi.ch/api/calendar.json?types=paper&region=zurich&start=" + requestedDate + "&end=" + requestedDate + "&offset=0&limit=100"
 
         records = json.load(urlopen(url))['result']
         zipCodes =[]
@@ -36,7 +37,7 @@ class zurichApi:
     @staticmethod
     def GetTomorrowCardboardDisposalZipCodes():
         requestedDate = str((datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d'))
-        url = "http://openerz.metaodi.ch/api/calendar/cardboard.json?region=zurich&start=" + requestedDate + "&end=" + requestedDate + "&offset=0&limit=100"
+        url = "http://openerz.metaodi.ch/api/calendar.json?types=cardboard&region=zurich&start=" + requestedDate + "&end=" + requestedDate + "&offset=0&limit=100"
 
         records = json.load(urlopen(url))['result']
         zipCodes =[]
@@ -52,7 +53,7 @@ class zurichApi:
     @staticmethod
     def GetTodayCardboardDisposalZipCodes():
         requestedDate = str((datetime.now()).strftime('%Y-%m-%d'))
-        url = "http://openerz.metaodi.ch/api/calendar/cardboard.json?region=zurich&start=" + requestedDate + "&end=" + requestedDate + "&offset=0&limit=100"
+        url = "http://openerz.metaodi.ch/api/calendar.json?types=cardboard&region=zurich&start=" + requestedDate + "&end=" + requestedDate + "&offset=0&limit=100"
 
         records = json.load(urlopen(url))['result']
         zipCodes =[]
