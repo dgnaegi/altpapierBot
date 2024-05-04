@@ -1,6 +1,5 @@
 import json
 from enum import Enum
-import logging
 
 class TranslationKeys(Enum):
     CONFIRMATION = "confirmation"
@@ -9,6 +8,8 @@ class TranslationKeys(Enum):
     NO_SUBSCRIPTION_FOUND = "no_subscription_found"
     UNSUBSCRIBE_CONFIRMATION = "unsubscribe_confirmation"
     LANGUAGE_CHANGE = "language_change"
+    START_SPAM_CONFIRMATION = "start_spam_confirmation"
+    STOP_SPAM_CONFIRMATION = "stop_spam_confirmation"
 
 def load_translations(filepath: str):
     with open(filepath, 'r', encoding='utf-8') as file:

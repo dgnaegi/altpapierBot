@@ -56,6 +56,38 @@ async def stop(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         reply_markup=ForceReply(selective=True),
     )
 
+async def start_spam(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    chat_id = context._chat_id
+    subscription = get_subscription_by_chat_id(chat_id)
+    message = ""
+
+    if subscription is None:
+        message = get_translation("de-CH", TranslationKeys.NO_SUBSCRIPTION_FOUND)
+    else:
+        update_subscription(chat_id=subscription.chat_id, enable_notifications=1)
+        message = get_translation(subscription.culture, TranslationKeys.START_SPAM_CONFIRMATION)
+
+    await update.message.reply_html(
+        rf"{message}",
+        reply_markup=ForceReply(selective=True),
+    )
+
+async def stop_spam(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    chat_id = context._chat_id
+    subscription = get_subscription_by_chat_id(chat_id)
+    message = ""
+
+    if subscription is None:
+        message = get_translation("de-CH", TranslationKeys.NO_SUBSCRIPTION_FOUND)
+    else:
+        update_subscription(chat_id=subscription.chat_id, enable_notifications=0)
+        message = get_translation(subscription.culture, TranslationKeys.STOP_SPAM_CONFIRMATION)
+
+    await update.message.reply_html(
+        rf"{message}",
+        reply_markup=ForceReply(selective=True),
+    )
+
 async def registration_en(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     chat_id = context._chat_id
     culture = "en-CH"
@@ -121,6 +153,8 @@ def main() -> None:
     application.add_handler(CommandHandler("stop", stop))
     application.add_handler(CommandHandler("de", de))
     application.add_handler(CommandHandler("en", en))
+    application.add_handler(CommandHandler("start_spam", start_spam))
+    application.add_handler(CommandHandler("stop_spam", stop_spam))
     application.add_handler(CommandHandler("help", help))
     application.run_polling(allowed_updates=Update.ALL_TYPES)
 

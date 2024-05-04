@@ -50,16 +50,16 @@ def update_subscription(chat_id: str, region: Optional[str] = None, area: Option
     parameters = []
 
     if region is not None:
-        updates.append("Region = %s")
+        updates.append("region = %s")
         parameters.append(region)
     if area is not None:
-        updates.append("Area = %s")
+        updates.append("area = %s")
         parameters.append(area)
     if enable_notifications is not None:
-        updates.append("EnableServiceNotifications = %s")
+        updates.append("enable_service_notifications = %s")
         parameters.append(enable_notifications)
     if culture is not None:
-        updates.append("Culture = %s")
+        updates.append("culture = %s")
         parameters.append(culture)
 
     if updates:
