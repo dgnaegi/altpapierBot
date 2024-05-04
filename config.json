@@ -1,8 +1,11 @@
 {
-    "host": "localhost",
-    "databaseName": "altpapierBot",
-    "databaseUser": "user",
-    "databasePassword": "yourpassword",
-    "token": "yourtoken",
-    "bebbiToken": "bebbiToken"
+    "database": {
+        "host": "localhost",
+        "user_name": "root",
+        "password": "yourpassword",
+        "database_name": "altpapierBot"
+    },
+    "telegram": {
+        "token": "yourtoken"
+    }
 }
