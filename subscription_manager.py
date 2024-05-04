@@ -3,7 +3,7 @@ import json
 from typing import Optional, List
 from dataclasses import dataclass
 
-with open('config.json') as config_file:
+with open('config_prod.json') as config_file:
     config = json.load(config_file)
 
 @dataclass

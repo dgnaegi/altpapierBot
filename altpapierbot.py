@@ -75,7 +75,7 @@ async def send_registration_error(culture: str, update: Update) -> None:
     )
 
 def main() -> None:
-    with open('config.json') as data_file:    
+    with open('config_prod.json') as data_file:    
         data = json.load(data_file)
         token = data["telegram"]["token"]
 
