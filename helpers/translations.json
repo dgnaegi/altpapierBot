@@ -4,13 +4,15 @@
         "registration_error": "Invalid postal code provided. Please send '/postalcode XXXX' and replace XXXX by one of the following postal codes which are supported: ",
         "already_subscribed_error": "You are already subscribed. If you want to change your notifications, you have to unsubscribe first by sending /stop and resubscribe afterwards. Currently you're getting disposal news for ",
         "no_subscription_found": "You are currently not subscribed for disposal notifications.",
-        "unsubscribe_confirmation": "You successfully unsubscribet, but you're able to resubscribe anytime."
+        "unsubscribe_confirmation": "You successfully unsubscribed, but you're able to resubscribe anytime.",
+        "language_change": "You'll receive notification in english from now on. Klicke hier um auf Deutsch zu wechseln -> /de"
     },
     "de-CH": {
-        "confirmation": "Du hast dich erfolgreich Abfuhrbenachrichtigungen abonniert in ",
+        "confirmation": "Du hast dich erfolgreich für Abfuhrbenachrichtigungen abonniert in ",
         "registration_error": "Du hast eine ungültige Postleitzahl eingegeben. Bitte schreibe '/plz XXXX' und ersetze dabei XXXX mit einer der folgenden Postleitzahlen: ",
         "already_subscribed_error": "Du hast dich bereits registriert. Falls du deine Benachrichtigungen ändern möchtest melde dich zuerst ab via /stop und registriere dich erneut. Aktuell erhälst du Abfuhrbenachrichtigungen für ",
         "no_subscription_found": "Du hast aktuell keine Abfuhrbenachrichtigungen abonniert.",
-        "unsubscribe_confirmation": "Du hast dich erfolgreich abgemeldet, kannst dich jedoch jederzeit wieder erneut registrieren."
+        "unsubscribe_confirmation": "Du hast dich erfolgreich abgemeldet, kannst dich jedoch jederzeit wieder erneut registrieren.",
+        "language_change": "Du kriegst zukünftig benachrichtigungen auf Deutsch. Click here to switch to english -> /en"
     }
 }

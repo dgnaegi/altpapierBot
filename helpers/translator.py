@@ -8,6 +8,7 @@ class TranslationKeys(Enum):
     ALREADY_SUBSCRIBED_ERROR = "already_subscribed_error"
     NO_SUBSCRIPTION_FOUND = "no_subscription_found"
     UNSUBSCRIBE_CONFIRMATION = "unsubscribe_confirmation"
+    LANGUAGE_CHANGE = "language_change"
 
 def load_translations(filepath: str):
     with open(filepath, 'r', encoding='utf-8') as file:

@@ -2,7 +2,7 @@ import json
 from telegram import ForceReply, Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 from helpers.postal_code_helper import get_postal_code, VALID_POSTAL_CODES
-from infrastructure.subscription_manager import add_subscription, get_subscription_by_chat_id, delete_subscription
+from infrastructure.subscription_manager import add_subscription, get_subscription_by_chat_id, delete_subscription, update_subscription
 from helpers.translator import get_translation, TranslationKeys
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -14,6 +14,28 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text("Help!")
+
+async def de(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    chat_id = context._chat_id
+    culture = "de-CH"
+
+    message = language_update(chat_id, culture)
+
+    await update.message.reply_html(
+        rf"{message}",
+        reply_markup=ForceReply(selective=True),
+    )
+
+async def en(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    chat_id = context._chat_id
+    culture = "en-CH"
+
+    message = language_update(chat_id, culture)
+
+    await update.message.reply_html(
+        rf"{message}",
+        reply_markup=ForceReply(selective=True),
+    )
 
 async def stop(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     chat_id = context._chat_id
@@ -78,6 +100,15 @@ def registration(chat_id: int, args: list[str], culture: str) -> str:
     message = get_translation(culture, TranslationKeys.CONFIRMATION)
     return rf"{message}{subscription.area}"
 
+def language_update(chat_id: int, culture: str) -> str:
+    subscription = get_subscription_by_chat_id(chat_id)
+
+    if subscription is None:
+        return get_translation(culture, TranslationKeys.NO_SUBSCRIPTION_FOUND)
+    
+    update_subscription(chat_id=subscription.chat_id, culture=culture)
+    return get_translation(culture, TranslationKeys.LANGUAGE_CHANGE)
+
 def main() -> None:
     with open('config_prod.json') as data_file:    
         data = json.load(data_file)
@@ -88,6 +119,8 @@ def main() -> None:
     application.add_handler(CommandHandler("plz", registration_de))
     application.add_handler(CommandHandler("postalcode", registration_en))
     application.add_handler(CommandHandler("stop", stop))
+    application.add_handler(CommandHandler("de", de))
+    application.add_handler(CommandHandler("en", en))
     application.add_handler(CommandHandler("help", help))
     application.run_polling(allowed_updates=Update.ALL_TYPES)
 
