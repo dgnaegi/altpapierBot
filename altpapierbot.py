@@ -2,7 +2,7 @@ import json
 from telegram import ForceReply, Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 from helpers.postal_code_helper import get_postal_code, VALID_POSTAL_CODES
-from infrastructure.subscription_manager import add_subscription, get_subscription_by_chat_id
+from infrastructure.subscription_manager import add_subscription, get_subscription_by_chat_id, delete_subscription
 from helpers.translator import get_translation, TranslationKeys
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -14,6 +14,25 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text("Help!")
+
+async def stop(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    chat_id = context._chat_id
+
+    subscription = get_subscription_by_chat_id(chat_id)
+    if subscription is None:
+        error = get_translation("en-CH", TranslationKeys.NO_SUBSCRIPTION_FOUND)
+        await update.message.reply_html(
+            rf"{error}",
+            reply_markup=ForceReply(selective=True),
+        )
+        return
+    
+    delete_subscription(chat_id)
+    message = get_translation(subscription.culture, TranslationKeys.UNSUBSCRIBE_CONFIRMATION)
+    await update.message.reply_html(
+        rf"{message}",
+        reply_markup=ForceReply(selective=True),
+    )
 
 async def registration_en(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     chat_id = context._chat_id
@@ -68,6 +87,7 @@ def main() -> None:
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("plz", registration_de))
     application.add_handler(CommandHandler("postalcode", registration_en))
+    application.add_handler(CommandHandler("stop", stop))
     application.add_handler(CommandHandler("help", help))
     application.run_polling(allowed_updates=Update.ALL_TYPES)
 
