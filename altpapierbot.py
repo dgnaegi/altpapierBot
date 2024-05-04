@@ -24,43 +24,42 @@ async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text("Help!")
 
 async def registration_en(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    postal_code = get_postal_code(context.args)
     chat_id = context._chat_id
     culture = "en-CH"
 
-    if(postal_code is None):
-        message = get_translation(culture, TranslationKeys.REGISTRATION_ERROR)
-        valid_entries = ", ".join(str(code.value) for code in VALID_POSTAL_CODES)
-        print(valid_entries)
-        return
-
-    new_subscription = registration(chat_id, postal_code, culture)
-    message = get_translation(culture, TranslationKeys.CONFIRMATION)
+    message = registration(chat_id, context.args, culture)
 
     await update.message.reply_html(
-        rf"{message}{new_subscription.area}",
+        rf"{message}",
         reply_markup=ForceReply(selective=True),
     )
 
 async def registration_de(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    postal_code = get_postal_code(context.args)
     chat_id = context._chat_id
     culture = "de-CH"
 
-    new_subscription = registration(chat_id, postal_code, culture)
-    message = get_translation(culture, TranslationKeys.CONFIRMATION)
+    message = registration(chat_id, context.args, culture)
 
     await update.message.reply_html(
-        rf"{message}{new_subscription.area}",
+        rf"{message}",
         reply_markup=ForceReply(selective=True),
     )
 
-async def registration(chat_id: int, postal_code: int, culture: str) -> Subscription:
+def registration(chat_id: int, args: list[str], culture: str) -> str:
     region = "Zurich"
-    area = postal_code
     enable_notifications = True
 
-    return add_subscription(chat_id, region, area, enable_notifications, culture)
+    postal_code = get_postal_code(args)
+    area = postal_code
+    
+    if postal_code is None:
+        message = get_translation(culture, TranslationKeys.REGISTRATION_ERROR)
+        valid_entries = ", ".join(str(code) for code in VALID_POSTAL_CODES)
+        return rf"{message}{valid_entries}"
+
+    subscription = add_subscription(chat_id, region, area, enable_notifications, culture)
+    message = get_translation(culture, TranslationKeys.CONFIRMATION)
+    return rf"{message}{subscription.area}, {subscription.region}"
 
 async def send_registration_error(culture: str, update: Update) -> None:
     message = get_translation(culture, TranslationKeys.REGISTRATION_ERROR)
