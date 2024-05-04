@@ -1,10 +1,12 @@
 {
     "en-CH": {
         "confirmation": "You successfully subscribed for disposal updates in ",
-        "registration_error": "Invalid postal code provided. Please send '/postalcode XXXX' and replace XXXX by one of the following postal codes which are supported: "
+        "registration_error": "Invalid postal code provided. Please send '/postalcode XXXX' and replace XXXX by one of the following postal codes which are supported: ",
+        "already_subscribed_error": "You are already subscribed. If you want to change your notifications, you have to unsubscribe first by sending /stop and reregister afterwards. Currently you're getting disposal news for "
     },
     "de-CH": {
         "confirmation": "Du hast dich erfolgreich für Abfuhrbenachrichtigungen registriert in ",
-        "registration_error": "Du hast eine ungültige Postleitzahl eingegeben. Bitte schreibe '/plz XXXX' und ersetze dabei XXXX mit einer der folgenden Postleitzahlen: "
+        "registration_error": "Du hast eine ungültige Postleitzahl eingegeben. Bitte schreibe '/plz XXXX' und ersetze dabei XXXX mit einer der folgenden Postleitzahlen: ",
+        "already_subscribed_error": "Du hast dich bereits registriert. Falls du deine Benachrichtigungen ändern möchtest melde dich zuerst ab via /stop und registriere dich erneut. Aktuell erhälst du Abfuhrbenachrichtigungen für "
     }
 }

@@ -5,6 +5,7 @@ import logging
 class TranslationKeys(Enum):
     CONFIRMATION = "confirmation"
     REGISTRATION_ERROR = "registration_error"
+    ALREADY_SUBSCRIBED_ERROR = "already_subscribed_error"
 
 def load_translations(filepath: str):
     with open(filepath, 'r', encoding='utf-8') as file:

@@ -11,7 +11,7 @@ class Subscription:
     chat_id: str
     region: str
     area: str
-    enable_notifications: bool
+    enable_service_notifications: bool
     culture: str
 
 def get_db_connection():
@@ -26,7 +26,7 @@ def add_subscription(chat_id: str, region: str, area: str, enable_notifications:
     connection = get_db_connection()
     try:
         with connection.cursor() as cursor:
-            sql = "INSERT INTO subscription (ChatId, Region, Area, EnableServiceNotifications, Culture) VALUES (%s, %s, %s, %s, %s)"
+            sql = "INSERT INTO subscription (chat_id, region, area, enable_service_notifications, culture) VALUES (%s, %s, %s, %s, %s)"
             cursor.execute(sql, (chat_id, region, area, enable_notifications, culture))
         connection.commit()
     finally:
@@ -65,7 +65,7 @@ def update_subscription(chat_id: str, region: Optional[str] = None, area: Option
     if updates:
         parameters.append(chat_id)
         sql_update = ", ".join(updates)
-        sql = f"UPDATE subscription SET {sql_update} WHERE ChatId = %s"
+        sql = f"UPDATE subscription SET {sql_update} WHERE chat_id = %s"
 
         try:
             with connection.cursor() as cursor:
@@ -81,20 +81,21 @@ def get_subscription_by_chat_id(chat_id: str) -> Optional[Subscription]:
     connection = get_db_connection()
     try:
         with connection.cursor() as cursor:
-            sql = "SELECT * FROM subscription WHERE ChatId = %s"
+            sql = "SELECT * FROM subscription WHERE chat_id = %s"
             cursor.execute(sql, (chat_id,))
             result = cursor.fetchone()
             if result:
                 return Subscription(**result)
+            else:
+                return None
     finally:
         connection.close()
-    return None
 
 def delete_subscription(chat_id: str) -> None:
     connection = get_db_connection()
     try:
         with connection.cursor() as cursor:
-            sql = "DELETE FROM subscription WHERE ChatId = %s"
+            sql = "DELETE FROM subscription WHERE chat_id = %s"
             cursor.execute(sql, (chat_id,))
         connection.commit()
     finally:

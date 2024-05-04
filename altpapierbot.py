@@ -1,17 +1,9 @@
 import json
-import logging
 from telegram import ForceReply, Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 from helpers.postal_code_helper import get_postal_code, VALID_POSTAL_CODES
-from infrastructure.subscription_manager import add_subscription, Subscription
+from infrastructure.subscription_manager import add_subscription, get_subscription_by_chat_id
 from helpers.translator import get_translation, TranslationKeys
-
-logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
-)
-
-logging.getLogger("httpx").setLevel(logging.WARNING)
-logger = logging.getLogger(__name__)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     user = update.effective_user
@@ -49,6 +41,12 @@ def registration(chat_id: int, args: list[str], culture: str) -> str:
     region = "Zurich"
     enable_notifications = True
 
+    subscription = get_subscription_by_chat_id(chat_id)
+
+    if subscription is not None:
+        error = get_translation(culture, TranslationKeys.ALREADY_SUBSCRIBED_ERROR)
+        return rf"{error}{subscription.area}"
+
     postal_code = get_postal_code(args)
     area = postal_code
     
@@ -59,19 +57,7 @@ def registration(chat_id: int, args: list[str], culture: str) -> str:
 
     subscription = add_subscription(chat_id, region, area, enable_notifications, culture)
     message = get_translation(culture, TranslationKeys.CONFIRMATION)
-    return rf"{message}{subscription.area}, {subscription.region}"
-
-async def send_registration_error(culture: str, update: Update) -> None:
-    message = get_translation(culture, TranslationKeys.REGISTRATION_ERROR)
-    valid_entries = ", ".join(str(code.value) for code in VALID_POSTAL_CODES)
-    await update.message.reply_html(
-        rf"{message}",
-        reply_markup=ForceReply(selective=True),
-    )
-    await update.message.reply_html(
-        rf"{valid_entries}",
-        reply_markup=ForceReply(selective=True),
-    )
+    return rf"{message}{subscription.area}"
 
 def main() -> None:
     with open('config_prod.json') as data_file:    
