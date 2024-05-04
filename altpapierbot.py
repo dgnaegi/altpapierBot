@@ -1,10 +1,10 @@
 import json
 import logging
 from telegram import ForceReply, Update
-from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
-from postal_code_helper import get_postal_code, VALID_POSTAL_CODES
-from subscription_manager import add_subscription, Subscription
-from translator import get_translation, TranslationKeys
+from telegram.ext import Application, CommandHandler, ContextTypes
+from helpers.postal_code_helper import get_postal_code, VALID_POSTAL_CODES
+from infrastructure.subscription_manager import add_subscription, Subscription
+from helpers.translator import get_translation, TranslationKeys
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
