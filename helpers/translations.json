@@ -13,7 +13,8 @@
         "paper_today": "Heads up: Paper collection is today.",
         "paper_tomorrow": "Reminder: Paper collection is tomorrow.",
         "cardboard_today": "Heads up: Cardboard collection is today.",
-        "cardboard_tomorrow": "Reminder: Cardboard collection is tomorrow."
+        "cardboard_tomorrow": "Reminder: Cardboard collection is tomorrow.",
+        "service_notification": "Dear user\n\nThanks for using AltpapierBot! It’s been five years since this service was introduced, and I'm glad to have nearly 500 users in multiple cities.\n\nRecently, there have been some stability issues for which I apologize. I spent the last weekend completely rewriting the system to improve reliability. While this update should help, there may still be some glitches over the next week. If you notice anything unusual, please contact me at @gnaegi_me.\n\nAs a first perk of the new version, you can now receive notifications in German. To switch languages, just click here: /de\n\nIf you find the service useful, feel free to mention it to friends who might benefit from it too!\n\nIf you prefer not to receive service updates like this, you can unsubscribe by clicking here: /stop_spam"
     },
     "de-CH": {
         "confirmation": "Alles klar! Du erhälst nun Abfuhrbenachrichtigungen am Abend zuvor und am Morgen des Abfuhrtags in ",
@@ -29,6 +30,6 @@
         "paper_today": "Achtung: Papierabholung ist heute.",
         "paper_tomorrow": "Erinnerung: Papierabholung ist morgen.",
         "cardboard_today": "Achtung: Kartonabholung ist heute.",
-        "cardboard_tomorrow": "Erinnerung: Kartonabholung ist morgen."
+        "service_notification": "Lieber user\n\nDanke, dass du AltpapierBot benutzt! Es sind bereits fünf Jahre vergangen, seit dieser Dienst eingeführt wurde, und ich freue mich, fast 500 Nutzer in mehreren Städten zu haben.\n\nIn letzter Zeit gab es einige Stabilitätsprobleme, für die ich mich entschuldigen möchte. Ich habe das letzte Wochenende damit verbracht, das System komplett neu zu schreiben, um die Zuverlässigkeit zu verbessern. Obwohl dieses Update helfen sollte, könnte es in der nächsten Woche noch einige kleine Fehler geben. Wenn dir etwas Ungewöhnliches auffällt, kontaktiere mich bitte unter @gnaegi_me.\n\nAls ersten Vorteil der neuen Version kannst du jetzt Benachrichtigungen auf Deutsch erhalten. Um die Sprache zu wechseln, klicke einfach hier: /de\n\nWenn du den Dienst nützlich findest, kannst du ihn gerne in aller Ruhe deinen Freunden empfehlen, die davon profitieren könnten.\n\nWenn du solche Service-Updates nicht erhalten möchtest, kannst du dich hier abmelden: /stop_spam"
     }
 }

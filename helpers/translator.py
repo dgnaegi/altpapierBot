@@ -18,6 +18,7 @@ class TranslationKeys(Enum):
     PAPER_TOMORROW = "paper_tomorrow"
     CARDBOARD_TODAY = "cardboard_today"
     CARDBOARD_TOMORROW = "cardboard_tomorrow"
+    SERVICE_NOTIFICATION = "service_notification"
 
 def load_translations(filepath: str):
     with open(filepath, 'r', encoding='utf-8') as file:
