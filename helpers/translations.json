@@ -1,7 +1,7 @@
 {
     "en-CH": {
         "confirmation": "All set! You will now receive disposal notifications the evening before and the morning of the collection day in ",
-        "registration_error": "Oops, that seems like an invalid postal code. Please send '/postalcode XXXX', replacing XXXX with a supported postal code from the following list: ",
+        "registration_error": "Oops, that seems like an invalid postal code. Please send '/postalcode XXXX', replacing XXXX with a supported postal code from the following list: \n\n",
         "already_subscribed_error": "Looks like you're already subscribed. To adjust your notifications, please unsubscribe first by sending '/stop' and then resubscribe. You are currently receiving disposal updates for ",
         "no_subscription_found": "It looks like you haven't subscribed to any disposal notifications yet.",
         "unsubscribe_confirmation": "You've unsubscribed successfully. Feel free to resubscribe whenever you wish!",
@@ -17,8 +17,8 @@
         "service_notification": "Dear user\n\nThanks for using AltpapierBot! It’s been five years since this service was introduced, and I'm glad to have nearly 500 users in multiple cities.\n\nRecently, there have been some stability issues for which I apologize. I spent the last weekend completely rewriting the system to improve reliability. While this update should help, there may still be some glitches over the next week. If you notice anything unusual, please contact me at @gnaegi_me.\n\nAs a first perk of the new version, you can now receive notifications in German. To switch languages, just click here: /de\n\nIf you find the service useful, feel free to mention it to friends who might benefit from it too!\n\nIf you prefer not to receive service updates like this, you can unsubscribe by clicking here: /stop_spam"
     },
     "de-CH": {
-        "confirmation": "Alles klar! Du erhälst nun Abfuhrbenachrichtigungen am Abend zuvor und am Morgen des Abfuhrtags in ",
-        "registration_error": "Ups, das ist eine ungültige Postleitzahl. Bitte sende '/plz XXXX' und ersetze XXXX mit einer der unterstützten Postleitzahlen: ",
+        "confirmation": "Geht klar! Du erhälst nun Abfuhrbenachrichtigungen am Abend vor und am Morgen eines Abfuhrtags in ",
+        "registration_error": "Ups, das ist eine ungültige Postleitzahl. Bitte sende '/plz XXXX' und ersetze XXXX mit einer der unterstützten Postleitzahlen: \n\n",
         "already_subscribed_error": "Du bist bereits angemeldet. Um deine Benachrichtigungen anzupassen, melde dich bitte zuerst mit '/stop' ab und anschließend wieder neu an. Derzeit bekommst du Abfuhrbenachrichtigungen für ",
         "no_subscription_found": "Du hast dich noch nicht für Abfuhrbenachrichtigungen angemeldet.",
         "unsubscribe_confirmation": "Du hast dich erfolgreich abgemeldet. Du kannst dich jederzeit wieder anmelden!",
