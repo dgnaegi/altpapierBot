@@ -1,6 +1,7 @@
 import json
-from telegram import ForceReply, Update
+from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
+
 from helpers.postal_code_helper import get_postal_code, VALID_POSTAL_CODES
 from infrastructure.subscription_manager import add_subscription, get_subscription_by_chat_id, delete_subscription, update_subscription
 from helpers.translator import get_translation, TranslationKeys
