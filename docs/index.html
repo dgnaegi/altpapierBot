@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AltpapierBot Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #24A1DE;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding-top: 20px;
+        }
+        .container {
+            width: 90%;
+            max-width: 960px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .column {
+            flex: 1;
+            padding: 10px;
+        }
+        .column img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+        }
+        .title {
+            color: #24A1DE;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .content {
+            text-align: justify;
+            padding-top: 10px;
+        }
+        .language-switch {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+        }
+        .language-switch button {
+            background-color: white;
+            border: 2px solid #24A1DE;
+            color: #24A1DE;
+            padding: 5px 10px;
+            margin-left: 5px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+            }
+            .column img {
+                max-height: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="switchLanguage('en')">EN</button>
+        <button onclick="switchLanguage('de')">DE</button>
+    </div>
+    <div class="container">
+        <h1 class="title" id="title">AltpapierBot</h1>
+        <div class="row">
+            <div class="column">
+                <div class="content" id="content1">
+                    <p>loading</p>
+                </div>
+            </div>
+            <div class="column">
+                <img src="setup.gif" alt="AltpapierBot Image">
+            </div>
+            <div class="column">
+                <div class="content" id="content2">
+                    <p>loading</p>
+                </div>
+            </div>
+            <div class="column">
+                <img src="additional_commands.gif" alt="AltpapierBot Image">
+            </div>
+        </div>
+        <h1 class="title" id="privacynotice_title">AltpapierBot</h1>
+        <div class="row">
+            <div class="content" id="privacynotice">
+                <p>loading</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const texts = {
+            en: {
+                title: "AltpapierBot Documentation",
+                content1: "AltpapierBot is a service that provides paper and cardboard disposal reminders for the city of Zurich via Telegram. Once set up, you will receive a reminder on the evening before and on the early morning of the disposal day for your area or postal code.<br><br>To set up the bot, send '/postalcode 8XXX', replacing the X's with your actual postal code. To receive reminders in German, send '/plz 8XXX'. If you no longer need the service, you can unsubscribe from notifications by sending 'stop'.",
+                content2: "There are some additional command for further settings. By sending '/de' respectively '/en' you can change your contact language. Furthermore, sometimes further notifications will be sent to you about the service. You can deactivate that by sending '/stop_spam', but this comes with the chance that you're going to miss relevant information.",
+                privacynotice_title: "Privacy notice",
+                privacynotice: "Only essential information necessary to deliver disposal reminders Telegram are stored. We collect your chat ID, which is a unique identifier for the chat session and does not reveal any personal information about you. Additionally, we store your notification preferences and your preferred language setting. The sourcecode is open source and available at <a href='https://github.com/dgnaegi/altpapierBot'>AltpapierBot on GitHub</a>."
+            },
+            de: {
+                title: "AltpapierBot Dokumentation",
+                content1: "AltpapierBot ist ein Dienst, der Erinnerungen zu Karton- und Papierabfuhr für die Stadt Zürich via Telegram bereitstellt. Nach der Einrichtung erhältst du jeweils am Abend vor und am frühen Morgen des Entsorgungstages eine Erinnerung für deinen Bereich oder deine Postleitzahl.<br><br>Um den Bot einzurichten, sende '/postalcode 8XXX', wobei du die X's durch deine tatsächliche Postleitzahl ersetzen musst. Um Erinnerungen auf Deutsch zu erhalten, sende '/plz 8XXX'. Wenn du den Dienst nicht mehr benötigst, kannst ihn mittels '/stop' abbestellen.",
+                content2: "Es gibt einige zusätzliche Befehle um den Bot weiter zu konfigurieren. Mittels '/de' respektive '/en' kannst du deine Kontaktsprache anpassen. Im Weiteren werden hin und wieder Nachrichten bezüglich des Dienstes verschickt. Diese Benachrichtigungen kannst du mittels '/stop_spam' deaktivieren. Dies birgt jedoch das Risiko, dass du relevante Informationen verpasst.",
+                privacynotice_title: "Datenschutz",
+                privacynotice: "Es werden nur wesentlichen Informationen gespeichert, die notwendig sind, um Entsorgungserinnerungen über Telegram zu liefern. Wir erfassen eine Chat-ID, die ein eindeutiger Bezeichner für die Chat-Sitzung ist und keine persönlichen Informationen über dich preisgibt. Zusätzlich werden Sprach- sowie Benachrichtigungseinstellungen gespeichert. Der Quellcode ist Open Source und verfügbar unter <a href='https://github.com/dgnaegi/altpapierBot'>AltpapierBot auf GitHub</a>."
+            }
+        };
+
+        function switchLanguage(lang) {
+            document.getElementById('title').textContent = texts[lang].title;
+            document.getElementById('content1').innerHTML = '<p>' + texts[lang].content1 + '</p>';
+            document.getElementById('content2').innerHTML = '<p>' + texts[lang].content1 + '</p>';
+            document.getElementById('privacynotice_title').innerHTML = '<p>' + texts[lang].privacynotice_title + '</p>';
+            document.getElementById('privacynotice').innerHTML = '<p>' + texts[lang].privacynotice + '</p>';
+        }
+        
+        switchLanguage('en');
+    </script>
+</body>
+</html>
