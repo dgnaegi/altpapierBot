@@ -1,8 +1,12 @@
 {
-    "host": "localhost",
-    "databaseName": "altpapierBot",
-    "databaseUser": "user",
-    "databasePassword": "yourpassword",
-    "token": "yourtoken",
-    "bebbiToken": "bebbiToken"
+    "_comment": "use this file as a blueprint for your config_prod.json",
+    "database": {
+        "host": "localhost",
+        "user_name": "root",
+        "password": "yourpassword",
+        "database_name": "altpapierBot"
+    },
+    "telegram": {
+        "token": "yourtoken"
+    }
 }

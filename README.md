@@ -1,9 +1,9 @@
 # altpapierBot
-Telegram Bot um sich zu Karton- sowie Papierabfuhr erinnern zu lassen
-[https://telegram.me/altpapierbot](https://telegram.me/altpapierbot)
+Ein Telegram Bot zur Erinnerung an die Termine für Karton- und Papierabholung.  
+Besuche den Bot hier: [https://telegram.me/altpapierbot](https://telegram.me/altpapierbot)
 
 ## Funktionsweise
-Detailiertere Informationen zur Nutzung und Funktionsweise sind unter [https://www.stadt-zuerich.ch/portal/de/index/ogd/anwendungen/2020/altbapier_bot.html](https://www.stadt-zuerich.ch/portal/de/index/ogd/anwendungen/2020/altbapier_bot.html)
+Für detaillierte Informationen zur Nutzung und Funktionsweise des Bots besuche bitte: [gnaegi.me/altpapierbot](https://www.gnaegi.me/altpapierbot)
 
 ## Datengrundlage
-Die Abfuhrdaten werden von der [Open Erz Api](https://www.stadt-zuerich.ch/portal/de/index/ogd/anwendungen/2019/open_erz_api.html), vom [Datenportal Basel-Stadt](https://data.bs.ch/) respektive der [API der Stadt St.Gallen](https://daten.stadt.sg.ch/api/v1/console/datasets/1.0/search/) bezogen.
+Die Termine für die Abfuhr werden durch die [Open Erz API](https://www.stadt-zuerich.ch/portal/de/index/ogd/anwendungen/2019/open_erz_api.html) der Stadt Zürich bereitgestellt.

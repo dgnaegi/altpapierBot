@@ -1,0 +1,35 @@
+{
+    "en-CH": {
+        "confirmation": "All set! You will now receive disposal notifications the evening before and the morning of the collection day in ",
+        "registration_error": "Oops, that seems like an invalid postal code. Please send '/postalcode XXXX', replacing XXXX with a supported postal code from the following list: ",
+        "already_subscribed_error": "Looks like you're already subscribed. To adjust your notifications, please unsubscribe first by sending '/stop' and then resubscribe. You are currently receiving disposal updates for ",
+        "no_subscription_found": "It looks like you haven't subscribed to any disposal notifications yet.",
+        "unsubscribe_confirmation": "You've unsubscribed successfully. Feel free to resubscribe whenever you wish!",
+        "language_change": "You'll receive notifications in English from now on. Click here to switch to German -> /de",
+        "stop_spam_confirmation": "You've turned off service notifications, but you'll continue to receive disposal messages. Reactivate service notifications here -> /start_spam",
+        "start_spam_confirmation": "Service notifications are back on!",
+        "welcome": "Welcome!\n\nWith AltpapierBot, you can conveniently receive reminders via Telegram on the evening before and the morning of a cardboard or paper collection day.\n\nPlease enter your postal code in the following format to get started: /postalcode 80XX.\n\nFor further assistance, click here: /help",
+        "help": "Need assistance or have feedback?\n\nVisit https://www.gnaegi.me/altpapierbot or contact @gnaegi_me .\n\nFor German, click here: /de",
+        "paper_today": "Heads up: Paper collection is today.",
+        "paper_tomorrow": "Reminder: Paper collection is tomorrow.",
+        "cardboard_today": "Heads up: Cardboard collection is today.",
+        "cardboard_tomorrow": "Reminder: Cardboard collection is tomorrow.",
+        "service_notification": "Dear user\n\nThanks for using AltpapierBot! It’s been five years since this service was introduced, and I'm glad to have nearly 500 users in multiple cities.\n\nRecently, there have been some stability issues for which I apologize. I spent the last weekend completely rewriting the system to improve reliability. While this update should help, there may still be some glitches over the next week. If you notice anything unusual, please contact me at @gnaegi_me.\n\nAs a first perk of the new version, you can now receive notifications in German. To switch languages, just click here: /de\n\nIf you find the service useful, feel free to mention it to friends who might benefit from it too!\n\nIf you prefer not to receive service updates like this, you can unsubscribe by clicking here: /stop_spam"
+    },
+    "de-CH": {
+        "confirmation": "Alles klar! Du erhälst nun Abfuhrbenachrichtigungen am Abend zuvor und am Morgen des Abfuhrtags in ",
+        "registration_error": "Ups, das ist eine ungültige Postleitzahl. Bitte sende '/plz XXXX' und ersetze XXXX mit einer der unterstützten Postleitzahlen: ",
+        "already_subscribed_error": "Du bist bereits angemeldet. Um deine Benachrichtigungen anzupassen, melde dich bitte zuerst mit '/stop' ab und anschließend wieder neu an. Derzeit bekommst du Abfuhrbenachrichtigungen für ",
+        "no_subscription_found": "Du hast dich noch nicht für Abfuhrbenachrichtigungen angemeldet.",
+        "unsubscribe_confirmation": "Du hast dich erfolgreich abgemeldet. Du kannst dich jederzeit wieder anmelden!",
+        "language_change": "Du erhältst zukünftig Benachrichtigungen auf Deutsch. Klicke hier, um auf Englisch zu wechseln -> /en",
+        "stop_spam_confirmation": "Du hast die Service-Benachrichtigungen ausgeschaltet, erhältst aber weiterhin Abfuhrmitteilungen. Aktiviere die Service-Benachrichtigungen hier wieder -> /start_spam",
+        "start_spam_confirmation": "Service-Benachrichtigungen sind wieder aktiv!",
+        "welcome": "Willkommen!\n\nMit dem AltpapierBot erhältst du bequeme Erinnerungen via Telegram am Abend vor und am Morgen einer Karton- oder Papierabfuhr.\n\nBitte gib deine Postleitzahl im folgenden Format ein, um zu beginnen: /plz 80XX.\n\nFür weiterführende Informationen klicke hier: /help",
+        "help": "Brauchst du Hilfe oder hast Rückmeldungen?\n\nBesuche https://www.gnaegi.me/altpapierbot oder kontaktiere @gnaegi_me für Unterstützung.\n\nFür Englisch, klicke hier: /en",
+        "paper_today": "Achtung: Papierabholung ist heute.",
+        "paper_tomorrow": "Erinnerung: Papierabholung ist morgen.",
+        "cardboard_today": "Achtung: Kartonabholung ist heute.",
+        "service_notification": "Lieber user\n\nDanke, dass du AltpapierBot benutzt! Es sind bereits fünf Jahre vergangen, seit dieser Dienst eingeführt wurde, und ich freue mich, fast 500 Nutzer in mehreren Städten zu haben.\n\nIn letzter Zeit gab es einige Stabilitätsprobleme, für die ich mich entschuldigen möchte. Ich habe das letzte Wochenende damit verbracht, das System komplett neu zu schreiben, um die Zuverlässigkeit zu verbessern. Obwohl dieses Update helfen sollte, könnte es in der nächsten Woche noch einige kleine Fehler geben. Wenn dir etwas Ungewöhnliches auffällt, kontaktiere mich bitte unter @gnaegi_me.\n\nAls ersten Vorteil der neuen Version kannst du jetzt Benachrichtigungen auf Deutsch erhalten. Um die Sprache zu wechseln, klicke einfach hier: /de\n\nWenn du den Dienst nützlich findest, kannst du ihn gerne in aller Ruhe deinen Freunden empfehlen, die davon profitieren könnten.\n\nWenn du solche Service-Updates nicht erhalten möchtest, kannst du dich hier abmelden: /stop_spam"
+    }
+}
