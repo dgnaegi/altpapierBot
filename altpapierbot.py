@@ -7,29 +7,33 @@ from helpers.translator import get_translation, TranslationKeys
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     chat_id = context._chat_id
-    culture = "en-CH"
     subscription = get_subscription_by_chat_id(chat_id)
     if subscription is not None:
-        culture = subscription.culture
+        message = get_translation(subscription.culture, TranslationKeys.WELCOME)
+        await update.message.reply_html(message)
+        return
 
-    message = get_translation(culture, TranslationKeys.WELCOME)
-    await update.message.reply_html(
-        message,
-        reply_markup=ForceReply(selective=True),
-    )
+    message_de = get_translation("de-CH", TranslationKeys.WELCOME)
+    message_en = get_translation("en-CH", TranslationKeys.WELCOME)
+    await update.message.reply_html("ENGLISH BELOW")
+    await update.message.reply_html(message_de)
+    await update.message.reply_html("------------")
+    await update.message.reply_html(message_en)
 
 async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     chat_id = context._chat_id
-    culture = "en-CH"
     subscription = get_subscription_by_chat_id(chat_id)
     if subscription is not None:
-        culture = subscription.culture
-
-    message = get_translation(culture, TranslationKeys.HELP)
-    await update.message.reply_html(
-        message,
-        reply_markup=ForceReply(selective=True),
-    )
+        message = get_translation(subscription.culture, TranslationKeys.HELP)
+        await update.message.reply_html(message)
+        return
+    
+    message_de = get_translation("de-CH", TranslationKeys.HELP)
+    message_en = get_translation("en-CH", TranslationKeys.HELP)
+    await update.message.reply_html("ENGLISH BELOW")
+    await update.message.reply_html(message_de)
+    await update.message.reply_html("------------")
+    await update.message.reply_html(message_en)
 
 async def de(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     chat_id = context._chat_id
@@ -39,7 +43,6 @@ async def de(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
     await update.message.reply_html(
         rf"{message}",
-        reply_markup=ForceReply(selective=True),
     )
 
 async def en(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -50,7 +53,6 @@ async def en(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
     await update.message.reply_html(
         rf"{message}",
-        reply_markup=ForceReply(selective=True),
     )
 
 async def stop(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -61,7 +63,6 @@ async def stop(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         error = get_translation("en-CH", TranslationKeys.NO_SUBSCRIPTION_FOUND)
         await update.message.reply_html(
             rf"{error}",
-            reply_markup=ForceReply(selective=True),
         )
         return
     
@@ -69,7 +70,6 @@ async def stop(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     message = get_translation(subscription.culture, TranslationKeys.UNSUBSCRIBE_CONFIRMATION)
     await update.message.reply_html(
         rf"{message}",
-        reply_markup=ForceReply(selective=True),
     )
 
 async def start_spam(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -85,7 +85,6 @@ async def start_spam(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
 
     await update.message.reply_html(
         rf"{message}",
-        reply_markup=ForceReply(selective=True),
     )
 
 async def stop_spam(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -101,7 +100,6 @@ async def stop_spam(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
     await update.message.reply_html(
         rf"{message}",
-        reply_markup=ForceReply(selective=True),
     )
 
 async def registration_en(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -112,7 +110,6 @@ async def registration_en(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
 
     await update.message.reply_html(
         rf"{message}",
-        reply_markup=ForceReply(selective=True),
     )
 
 async def registration_de(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -123,7 +120,6 @@ async def registration_de(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
 
     await update.message.reply_html(
         rf"{message}",
-        reply_markup=ForceReply(selective=True),
     )
 
 def registration(chat_id: int, args: list[str], culture: str) -> str:
@@ -133,7 +129,7 @@ def registration(chat_id: int, args: list[str], culture: str) -> str:
     subscription = get_subscription_by_chat_id(chat_id)
 
     if subscription is not None:
-        error = get_translation(culture, TranslationKeys.ALREADY_SUBSCRIBED_ERROR)
+        error = get_translation(subscription.culture, TranslationKeys.ALREADY_SUBSCRIBED_ERROR)
         return rf"{error}{subscription.area}"
 
     postal_code = get_postal_code(args)
