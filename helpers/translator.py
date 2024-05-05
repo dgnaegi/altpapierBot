@@ -10,6 +10,8 @@ class TranslationKeys(Enum):
     LANGUAGE_CHANGE = "language_change"
     START_SPAM_CONFIRMATION = "start_spam_confirmation"
     STOP_SPAM_CONFIRMATION = "stop_spam_confirmation"
+    WELCOME = "welcome"
+    HELP = "help"
 
 def load_translations(filepath: str):
     with open(filepath, 'r', encoding='utf-8') as file:

@@ -6,14 +6,30 @@ from infrastructure.subscription_manager import add_subscription, get_subscripti
 from helpers.translator import get_translation, TranslationKeys
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    user = update.effective_user
+    chat_id = context._chat_id
+    culture = "en-CH"
+    subscription = get_subscription_by_chat_id(chat_id)
+    if subscription is not None:
+        culture = subscription.culture
+
+    message = get_translation(culture, TranslationKeys.WELCOME)
     await update.message.reply_html(
-        rf"Hi {user.mention_html()}!",
+        message,
         reply_markup=ForceReply(selective=True),
     )
 
 async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await update.message.reply_text("Help!")
+    chat_id = context._chat_id
+    culture = "en-CH"
+    subscription = get_subscription_by_chat_id(chat_id)
+    if subscription is not None:
+        culture = subscription.culture
+
+    message = get_translation(culture, TranslationKeys.HELP)
+    await update.message.reply_html(
+        message,
+        reply_markup=ForceReply(selective=True),
+    )
 
 async def de(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     chat_id = context._chat_id
