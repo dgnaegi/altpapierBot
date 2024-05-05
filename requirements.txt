@@ -20,7 +20,7 @@ future @ file:///AppleInternal/Library/BuildRoots/860631e9-c1c5-11ee-98ee-b6ef2f
 h11==0.14.0
 httpcore==1.0.5
 httpx==0.27.0
-idna==3.4
+idna==3.7
 importlib_metadata==7.1.0
 install==1.3.5
 ipython==8.12.3
