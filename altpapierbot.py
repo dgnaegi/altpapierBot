@@ -155,7 +155,7 @@ def language_update(chat_id: int, culture: str) -> str:
     return get_translation(culture, TranslationKeys.LANGUAGE_CHANGE)
 
 def main() -> None:
-    with open('config_prod.json') as data_file:    
+    with open('/home/dgnaegi/altpapierBot/config_prod.json') as data_file:    
         data = json.load(data_file)
         token = data["telegram"]["token"]
 
