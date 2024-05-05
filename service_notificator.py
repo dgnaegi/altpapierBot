@@ -22,7 +22,7 @@ async def send_notifications(bot):
 
 async def main():
     logging.basicConfig(level=logging.ERROR)
-    with open('config_prod.json') as config_file:
+    with open('/home/dgnaegi/altpapierBot/config_prod.json') as config_file:
         config = json.load(config_file)
 
     token = config["telegram"]["token"]
