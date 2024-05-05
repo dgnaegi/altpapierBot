@@ -25,7 +25,7 @@ def load_translations(filepath: str):
         translations = json.load(file)
     return translations
 
-translations = load_translations('helpers/translations.json')
+translations = load_translations('/home/dgnaegi/altpapierBot/helpers/translations.json')
 
 def get_translation(locale: str, message_key: TranslationKeys) -> str:
     return translations[locale][message_key.value]
