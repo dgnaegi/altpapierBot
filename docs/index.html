@@ -116,14 +116,14 @@
             en: {
                 title: "AltpapierBot Documentation",
                 content1: "AltpapierBot is a service that provides paper and cardboard disposal reminders for the city of Zurich via Telegram. Once set up, you will receive a reminder on the evening before and on the early morning of the disposal day for your area or postal code.<br><br>To set up the bot, send '/postalcode 8XXX', replacing the X's with your actual postal code. To receive reminders in German, send '/plz 8XXX'. If you no longer need the service, you can unsubscribe from notifications by sending 'stop'.",
-                content2: "There are some additional command for further settings. By sending '/de' respectively '/en' you can change your contact language. Furthermore, sometimes further notifications will be sent to you about the service. You can deactivate that by sending '/stop_spam', but this comes with the chance that you're going to miss relevant information.",
+                content2: "There are some additional command for further settings. By sending '/de' respectively '/en' you can change your contact language. Furthermore, sometimes further notifications will be sent to you about the service. You can deactivate that by sending '/stop_spam', but this comes with the chance that you're going to miss relevant information.<br><br>For further information, send '/help'",
                 privacynotice_title: "Privacy notice",
                 privacynotice: "Only essential information necessary to deliver disposal reminders Telegram are stored. We collect your chat ID, which is a unique identifier for the chat session and does not reveal any personal information about you. Additionally, we store your notification preferences and your preferred language setting. The sourcecode is open source and available at <a href='https://github.com/dgnaegi/altpapierBot'>AltpapierBot on GitHub</a>."
             },
             de: {
                 title: "AltpapierBot Dokumentation",
                 content1: "AltpapierBot ist ein Dienst, der Erinnerungen zu Karton- und Papierabfuhr für die Stadt Zürich via Telegram bereitstellt. Nach der Einrichtung erhältst du jeweils am Abend vor und am frühen Morgen des Entsorgungstages eine Erinnerung für deinen Bereich oder deine Postleitzahl.<br><br>Um den Bot einzurichten, sende '/postalcode 8XXX', wobei du die X's durch deine tatsächliche Postleitzahl ersetzen musst. Um Erinnerungen auf Deutsch zu erhalten, sende '/plz 8XXX'. Wenn du den Dienst nicht mehr benötigst, kannst ihn mittels '/stop' abbestellen.",
-                content2: "Es gibt einige zusätzliche Befehle um den Bot weiter zu konfigurieren. Mittels '/de' respektive '/en' kannst du deine Kontaktsprache anpassen. Im Weiteren werden hin und wieder Nachrichten bezüglich des Dienstes verschickt. Diese Benachrichtigungen kannst du mittels '/stop_spam' deaktivieren. Dies birgt jedoch das Risiko, dass du relevante Informationen verpasst.",
+                content2: "Es gibt einige zusätzliche Befehle um den Bot weiter zu konfigurieren. Mittels '/de' respektive '/en' kannst du deine Kontaktsprache anpassen. Im Weiteren werden hin und wieder Nachrichten bezüglich des Dienstes verschickt. Diese Benachrichtigungen kannst du mittels '/stop_spam' deaktivieren. Dies birgt jedoch das Risiko, dass du relevante Informationen verpasst.<br><br>Für weiter Informationen sende '/help'",
                 privacynotice_title: "Datenschutz",
                 privacynotice: "Es werden nur wesentlichen Informationen gespeichert, die notwendig sind, um Entsorgungserinnerungen über Telegram zu liefern. Wir erfassen eine Chat-ID, die ein eindeutiger Bezeichner für die Chat-Sitzung ist und keine persönlichen Informationen über dich preisgibt. Zusätzlich werden Sprach- sowie Benachrichtigungseinstellungen gespeichert. Der Quellcode ist Open Source und verfügbar unter <a href='https://github.com/dgnaegi/altpapierBot'>AltpapierBot auf GitHub</a>."
             }
@@ -132,7 +132,7 @@
         function switchLanguage(lang) {
             document.getElementById('title').textContent = texts[lang].title;
             document.getElementById('content1').innerHTML = '<p>' + texts[lang].content1 + '</p>';
-            document.getElementById('content2').innerHTML = '<p>' + texts[lang].content1 + '</p>';
+            document.getElementById('content2').innerHTML = '<p>' + texts[lang].content2 + '</p>';
             document.getElementById('privacynotice_title').innerHTML = '<p>' + texts[lang].privacynotice_title + '</p>';
             document.getElementById('privacynotice').innerHTML = '<p>' + texts[lang].privacynotice + '</p>';
         }
