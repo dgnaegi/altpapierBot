@@ -9,7 +9,11 @@
         "stop_spam_confirmation": "You successfully deactivated serivce notifications, but you'll still receive disposal messages. You can reactivate service notifications by clicking here -> /start_spam",
         "start_spam_confirmation": "You successfully reactivated service notifications",
         "welcome": "asdfasdf\n\n<blockquote>/postalcode 80XX",
-        "help": "<strong>Hello world</strong>Test"
+        "help": "<strong>Hello world</strong>Test",
+        "paper_today": "Paper today",
+        "paper_tomorrow": "Paper tomorrow",
+        "cardboard_today": "Cardboard today",
+        "cardboard_tomorrow": "Cardboard tomorrow"
     },
     "de-CH": {
         "confirmation": "Du hast dich erfolgreich für Abfuhrbenachrichtigungen abonniert in ",
@@ -21,6 +25,10 @@
         "stop_spam_confirmation": "Du hast Service-Benachrichtigungen deaktiviert, kriegst aber immernoch Abfuhrerinnerungen. Klicke hier um Servicebenachrichtigungen erneut zu aktivieren -> /start_spam",
         "start_spam_confirmation": "Du erhälst nun wieder Service-Benachrichtigungen.",
         "welcome": "asdfasdf\n\n<blockquote>Block quotation started\nBlock quotation continued\nThe last line of the block quotation</blockquote>",
-        "help": "<strong>Hello world</strong>Test"
+        "help": "<strong>Hello world</strong>Test",
+        "paper_today": "Paper today",
+        "paper_tomorrow": "Paper tomorrow",
+        "cardboard_today": "Cardboard today",
+        "cardboard_tomorrow": "Cardboard tomorrow"
     }
 }
