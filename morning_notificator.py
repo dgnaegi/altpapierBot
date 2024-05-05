@@ -1,6 +1,7 @@
 import asyncio
 from datetime import datetime
 import json
+import logging
 from telegram import Bot
 
 from helpers.erz_api_helper import DisposalType, get_disposal_postal_codes
@@ -12,16 +13,25 @@ async def send_notifications(bot):
     subscriptions = get_subscriptions()
 
     for disposal_type in DisposalType:
-        postal_codes = get_disposal_postal_codes(date, disposal_type)
-        postal_codes = {str(code).strip() for code in postal_codes}
+        try:
+            postal_codes = get_disposal_postal_codes(date, disposal_type)
+            postal_codes = {str(code).strip() for code in postal_codes}
 
-        for subscription in subscriptions:
-            if subscription.area in postal_codes:
-                translation_key = get_translation_key(disposal_type, "today")
-                message = get_translation(subscription.culture, translation_key)
-                await bot.send_message(chat_id=subscription.chat_id, text=message)
+            for subscription in subscriptions:
+                if subscription.area in postal_codes:
+                    try:
+                        translation_key = get_translation_key(disposal_type, "today")
+                        message = get_translation(subscription.culture, translation_key)
+                        await bot.send_message(chat_id=subscription.chat_id, text=message)
+                    except Exception as e:
+                        logging.error(f"Failed to send message for chat_id {subscription.chat_id}: {str(e)}")
+                        continue
+        except Exception as e:
+            logging.error(f"Error processing disposal type {disposal_type}: {str(e)}")
+            continue
 
 async def main():
+    logging.basicConfig(level=logging.ERROR)
     with open('config_prod.json') as config_file:
         config = json.load(config_file)
 
