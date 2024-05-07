@@ -30,6 +30,7 @@
         "paper_today": "Achtung: Papierabholung ist heute.",
         "paper_tomorrow": "Erinnerung: Papierabholung ist morgen.",
         "cardboard_today": "Achtung: Kartonabholung ist heute.",
+        "cardboard_tomorrow": "Erinnerung: Kartonabholung ist morgen.",
         "service_notification": "Lieber user\n\nDanke, dass du AltpapierBot benutzt! Es sind bereits fünf Jahre vergangen, seit dieser Dienst eingeführt wurde, und ich freue mich, fast 500 Nutzer in mehreren Städten zu haben.\n\nIn letzter Zeit gab es einige Stabilitätsprobleme, für die ich mich entschuldigen möchte. Ich habe das letzte Wochenende damit verbracht, das System komplett neu zu schreiben, um die Zuverlässigkeit zu verbessern. Obwohl dieses Update helfen sollte, könnte es in der nächsten Woche noch einige kleine Fehler geben. Wenn dir etwas Ungewöhnliches auffällt, kontaktiere mich bitte unter @gnaegi_me.\n\nAls ersten Vorteil der neuen Version kannst du jetzt Benachrichtigungen auf Deutsch erhalten. Um die Sprache zu wechseln, klicke einfach hier: /de\n\nWenn du den Dienst nützlich findest, kannst du ihn gerne in aller Ruhe deinen Freunden empfehlen, die davon profitieren könnten.\n\nWenn du solche Service-Updates nicht erhalten möchtest, kannst du dich hier abmelden: /stop_spam"
     }
 }

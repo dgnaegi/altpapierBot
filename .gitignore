@@ -1,3 +1,4 @@
 config_test.json
 config_prod.json
 *_errors.log
+.DS_STORE
